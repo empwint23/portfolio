@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>May Myat (Elizabeth) Moe Pwint</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#FAFAF8;--surface:#FFFFFF;--page:#F4F2EE;--border:#E8E5DF;--border-dark:#D4CFCA;
+      --text:#1A1917;--text-2:#5C5955;--text-3:#9B9791;--accent:#B87333;--accent-bg:#FBF3EA;
+      --tag-bg:#EFEFED;--tag-text:#5C5955;
+      --font-serif:'Libre Baskerville',Georgia,serif;--font-sans:'DM Sans',system-ui,sans-serif;
+      --sidebar-w:240px;--content-max:760px;--r:4px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    code{font-family:'Courier New',monospace;font-size:.82em;background:var(--tag-bg);padding:.1em .35em;border-radius:3px;color:var(--text-2)}
+    .layout{display:flex;min-height:100vh}
+    .sidebar{width:var(--sidebar-w);flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--page);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:2rem 0}
+    .sidebar-brand{padding:0 1.25rem 1.75rem;border-bottom:1px solid var(--border);margin-bottom:1.25rem}
+    .sidebar-brand-name{font-family:var(--font-serif);font-size:.95rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:.35rem}
+    .sidebar-brand-sub{font-size:.72rem;color:var(--text-3);line-height:1.5}
+    .sidebar-nav{flex:1;padding:0 .5rem}
+    .nav-section-label{font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);padding:.5rem .75rem .3rem;display:block}
+    .nav-item{display:flex;align-items:center;gap:.5rem;padding:.32rem .75rem;border-radius:var(--r);font-size:.8rem;color:var(--text-2);transition:background .12s,color .12s;cursor:pointer}
+    .nav-item:hover,.nav-item.active{background:var(--border);color:var(--text)}
+    .nav-item-icon{font-size:.85rem;width:18px;text-align:center;flex-shrink:0}
+    .nav-sub{padding-left:1.75rem}
+    .nav-sub .nav-item{font-size:.77rem;color:var(--text-3)}
+    .sidebar-footer{padding:1.25rem 1.25rem 0;border-top:1px solid var(--border);margin-top:1rem}
+    .sidebar-links{display:flex;flex-direction:column;gap:.4rem}
+    .sidebar-link{display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--text-3);padding:.3rem .5rem;border-radius:var(--r);transition:color .12s,background .12s}
+    .sidebar-link:hover{color:var(--accent);background:var(--accent-bg)}
+    .content{flex:1;min-width:0}
+    .cover{padding:5rem 4rem 4rem;border-bottom:1px solid var(--border);max-width:calc(var(--content-max) + 8rem)}
+    .cover-eyebrow{display:flex;align-items:center;gap:.6rem;margin-bottom:2rem;flex-wrap:wrap}
+    .cover-eyebrow span{font-size:.7rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--text-3)}
+    .cover-eyebrow-dot{width:3px;height:3px;border-radius:50%;background:var(--border-dark)}
+    .cover-name{font-family:var(--font-serif);font-size:clamp(3rem,6vw,5.5rem);font-weight:700;line-height:1.0;letter-spacing:-.02em;color:var(--text);margin-bottom:.6rem}
+    .cover-name .italic{font-weight:400;font-style:italic;color:var(--accent)}
+    .cover-headline{font-family:var(--font-serif);font-size:clamp(1rem,1.8vw,1.25rem);font-weight:400;font-style:italic;color:var(--text-2);margin-bottom:2rem;max-width:560px;line-height:1.55}
+    .cover-bio{font-size:.93rem;color:var(--text-2);line-height:1.8;max-width:540px;margin-bottom:2.5rem}
+    .cover-actions{display:flex;flex-wrap:wrap;gap:.6rem}
+    .btn{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--font-sans);font-size:.78rem;font-weight:500;letter-spacing:.03em;border-radius:var(--r);padding:.5rem 1rem;transition:all .15s;cursor:pointer;border:1px solid transparent}
+    .btn-filled{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .btn-filled:hover{background:#333}
+    .btn-outline{background:transparent;color:var(--text-2);border-color:var(--border-dark)}
+    .btn-outline:hover{border-color:var(--text-2);color:var(--text)}
+    .page-section{padding:3.5rem 4rem;max-width:calc(var(--content-max) + 8rem);border-bottom:1px solid var(--border)}
+    .section-header{margin-bottom:2.5rem}
+    .section-emoji{font-size:1.6rem;margin-bottom:.75rem;display:block}
+    .section-title{font-family:var(--font-serif);font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;line-height:1.15;color:var(--text);margin-bottom:.5rem}
+    .section-desc{font-size:.88rem;color:var(--text-3);max-width:480px}
+    .callout{display:flex;gap:.85rem;background:var(--accent-bg);border:1px solid #E8C89A;border-radius:var(--r);padding:1rem 1.1rem;margin-bottom:1.75rem}
+    .callout-icon{font-size:1rem;flex-shrink:0;padding-top:.05rem}
+    .callout-text{font-size:.88rem;color:var(--text-2);line-height:1.7}
+    .about-body p{font-size:.93rem;color:var(--text-2);line-height:1.85;margin-bottom:1.2rem}
+    .about-body p:last-child{margin-bottom:0}
+    .props-table{width:100%;border-collapse:collapse;margin-top:2.5rem;font-size:.83rem}
+    .props-table tr{border-top:1px solid var(--border)}
+    .props-table tr:last-child{border-bottom:1px solid var(--border)}
+    .props-table td{padding:.6rem .4rem;vertical-align:top}
+    .props-table .prop-key{color:var(--text-3);width:150px;font-weight:500;font-size:.75rem;letter-spacing:.04em;padding-right:1.5rem;white-space:nowrap}
+    .props-table .prop-val{color:var(--text-2)}
+    .prop-tag{display:inline-block;background:var(--tag-bg);color:var(--tag-text);font-size:.72rem;font-weight:500;padding:.15rem .55rem;border-radius:3px;margin:.1rem .15rem .1rem 0}
+    .projects-list{display:flex;flex-direction:column;gap:.75rem}
+    .project-row{border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:box-shadow .15s}
+    .project-row:hover{box-shadow:0 2px 12px rgba(0,0,0,.06)}
+    .project-row-header{display:grid;grid-template-columns:1fr auto;align-items:start;gap:1rem;padding:1.4rem 1.5rem;cursor:pointer;background:var(--surface);user-select:none}
+    .project-row-left{display:flex;flex-direction:column;gap:.5rem}
+    .project-meta{display:flex;align-items:center;flex-wrap:wrap;gap:.4rem}
+    .project-num{font-size:.68rem;font-weight:500;color:var(--text-3);letter-spacing:.08em}
+    .project-row-title{font-family:var(--font-serif);font-size:1.25rem;font-weight:700;color:var(--text);line-height:1.2}
+    .project-row-sub{font-size:.8rem;color:var(--text-3)}
+    .project-toggle{width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:3px;color:var(--text-3);font-size:.7rem;flex-shrink:0;margin-top:.15rem;transition:transform .2s,background .12s}
+    .project-row-header:hover .project-toggle{background:var(--tag-bg)}
+    .project-row.open .project-toggle{transform:rotate(90deg)}
+    .project-body{display:none;padding:0 1.5rem 1.5rem;background:var(--surface);border-top:1px solid var(--border)}
+    .project-row.open .project-body{display:block}
+    .project-body-grid{display:grid;grid-template-columns:1fr 200px;gap:2rem;padding-top:1.4rem}
+    .project-body-text p{font-size:.88rem;color:var(--text-2);line-height:1.8;margin-bottom:1rem}
+    .project-body-text p:last-child{margin-bottom:0}
+    .block-label{font-size:.68rem!important;font-weight:500!important;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)!important;margin:1.25rem 0 .4rem!important;line-height:1!important}
+    .project-body-meta{border-left:1px solid var(--border);padding-left:1.5rem}
+    .meta-group{margin-bottom:1.5rem}
+    .meta-group-label{font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:.5rem}
+    .meta-tag-list{display:flex;flex-wrap:wrap;gap:.3rem}
+    .skills-columns{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .skill-block{padding:1.4rem;border:1px solid var(--border);border-radius:6px;background:var(--surface)}
+    .skill-block-title{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+    .skill-list{list-style:none}
+    .skill-list li{font-size:.86rem;color:var(--text-2);padding:.38rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.6rem}
+    .skill-list li:last-child{border-bottom:none}
+    .skill-check{width:14px;height:14px;border:1.5px solid var(--border-dark);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);font-size:.6rem}
+    .exp-rows{display:flex;flex-direction:column}
+    .exp-row{display:grid;grid-template-columns:120px 1fr;gap:2rem;padding:1.6rem 0;border-bottom:1px solid var(--border)}
+    .exp-row:first-child{border-top:1px solid var(--border)}
+    .exp-date{font-size:.75rem;color:var(--text-3);padding-top:.1rem}
+    .exp-title{font-family:var(--font-serif);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
+    .exp-org{font-size:.78rem;color:var(--accent);font-weight:500;margin-bottom:.6rem}
+    .exp-desc{font-size:.86rem;color:var(--text-2);line-height:1.75}
+    .cta-block{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;background:var(--text);border-radius:8px;padding:2.5rem;margin-top:2.5rem}
+    .cta-text h3{font-family:var(--font-serif);font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:.4rem}
+    .cta-text p{font-size:.86rem;color:rgba(255,255,255,.6);max-width:380px;line-height:1.65}
+    .btn-cta{background:#fff;color:var(--text);border-color:#fff;font-size:.82rem;padding:.6rem 1.25rem;white-space:nowrap;flex-shrink:0}
+    .btn-cta:hover{background:var(--bg)}
+    .contact-cards{display:flex;flex-direction:column;gap:.6rem;margin-top:1.5rem}
+    .contact-card{display:flex;align-items:center;gap:1rem;padding:1rem 1.1rem;border:1px solid var(--border);border-radius:6px;background:var(--surface);transition:border-color .15s}
+    .contact-card:hover{border-color:var(--accent)}
+    .contact-icon{width:34px;height:34px;border-radius:var(--r);background:var(--accent-bg);display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0}
+    .contact-label{font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:.1rem}
+    .contact-value{font-size:.88rem;color:var(--text)}
+    .page-footer{padding:1.5rem 4rem;display:flex;align-items:center;justify-content:space-between;font-size:.75rem;color:var(--text-3);max-width:calc(var(--content-max) + 8rem)}
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .45s ease,transform .45s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .mobile-nav{display:none;position:sticky;top:0;z-index:50;background:var(--page);border-bottom:1px solid var(--border);padding:.6rem 1.75rem;gap:1.5rem;overflow-x:auto}
+    .mobile-nav a{font-size:.78rem;color:var(--text-2);white-space:nowrap;padding:.25rem 0;border-bottom:1.5px solid transparent}
+    .mobile-nav a:hover{color:var(--accent);border-color:var(--accent)}
+    @media(max-width:860px){
+      .sidebar{display:none}.mobile-nav{display:flex}
+      .cover,.page-section{padding:3rem 1.75rem}
+      .project-body-grid{grid-template-columns:1fr}
+      .project-body-meta{border-left:none;padding-left:0;border-top:1px solid var(--border);padding-top:1.2rem}
+      .skills-columns{grid-template-columns:1fr}
+      .exp-row{grid-template-columns:1fr;gap:.3rem}
+      .page-footer{padding:1.5rem 1.75rem;flex-direction:column;gap:.4rem;text-align:center}
+    }
+    @media(max-width:520px){.cover-name{font-size:2.6rem}.cta-block{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+<nav class="mobile-nav">
+  <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+</nav>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <p class="sidebar-brand-name">May Myat (Elizabeth)<br>Moe Pwint</p>
+      <p class="sidebar-brand-sub">Data Science &amp; Business<br>Northeastern &middot; Class of 2028</p>
+    </div>
+    <nav class="sidebar-nav">
+      <span class="nav-section-label">Pages</span>
+      <a href="#about" class="nav-item"><span class="nav-item-icon">&#128100;</span> About</a>
+      <a href="#projects" class="nav-item"><span class="nav-item-icon">&#128193;</span> Projects</a>
+      <div class="nav-sub">
+        <a href="#proj-music" class="nav-item">Music Dataset Analysis</a>
+        <a href="#proj-burlook" class="nav-item">BurLook</a>
+        <a href="#proj-guardia" class="nav-item">Guardia</a>
+        <a href="#proj-raiz" class="nav-item">RAIZ Pitch</a>
+      </div>
+      <a href="#skills" class="nav-item"><span class="nav-item-icon">&#129513;</span> Skills</a>
+      <a href="#experience" class="nav-item"><span class="nav-item-icon">&#128204;</span> Experience</a>
+      <a href="#contact" class="nav-item"><span class="nav-item-icon">&#9993;</span> Contact</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-links">
+        <a href="https://www.linkedin.com/in/may-myat-moe-pwint" class="sidebar-link" target="_blank" rel="noopener">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zm2-4a2 2 0 110 4 2 2 0 010-4z"/></svg>
+          LinkedIn
+        </a>
+        <a href="./May_Myat__Elizabeth__Moe_Pwint_Resume.pdf" class="sidebar-link" download>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Resume
+        </a>
+      </div>
+    </div>
+  </aside>
+  <main class="content">
+    <div class="cover" id="top">
+      <div class="cover-eyebrow reveal">
+        <span>Northeastern University</span><div class="cover-eyebrow-dot"></div>
+        <span>Data Science &amp; Business Administration</span><div class="cover-eyebrow-dot"></div>
+        <span>Class of 2028</span>
+      </div>
+      <h1 class="cover-name reveal">May Myat <span class="italic">(Elizabeth)</span><br>Moe Pwint</h1>
+      <p class="cover-headline reveal">Data Science and Business student focused on product, strategy, and business-facing technical work.</p>
+      <p class="cover-bio reveal">I study Data Science and Business Administration at Northeastern University. My experience spans analysis, product thinking, and communication across different kinds of projects. I'm most interested in problems that start out unclear and need structure, research, and sound judgment to move forward.</p>
+      <div class="cover-actions reveal">
+        <a href="./May_Myat__Elizabeth__Moe_Pwint_Resume.pdf" class="btn btn-filled" download>Resume</a>
+        <a href="https://www.linkedin.com/in/may-myat-moe-pwint" class="btn btn-outline" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <section class="page-section" id="about">
+      <div class="section-header reveal">
+        <span class="section-emoji">&#128100;</span>
+        <h2 class="section-title">About</h2>
+      </div>
+      <div class="callout reveal">
+        <span class="callout-icon">&#128205;</span>
+        <p class="callout-text">Sophomore at Northeastern University, Boston. Combined major in Data Science and Business Administration. Expected graduation: May 2028.</p>
+      </div>
+      <div class="about-body reveal">
+        <p>I'm a Data Science and Business Administration student at Northeastern University with interests in product, strategy, and business-facing technical work. I'm most drawn to problems that start out unclear and need structure, research, and clear thinking to move forward.</p>
+        <p>My work has included databases, programming, data analysis, business projects, and presentation-driven work. I'm a quick learner, and I adapt fast once I understand the basics. If someone teaches me something once with patience, I can usually pick it up quickly and turn it into strong, reliable deliverables. I work best in spaces where technical detail and business thinking both matter.</p>
+        <p>I'm especially strong at creating pitches, presentations, and polished project materials. I like coming up with ideas, developing them into something practical, and presenting them clearly. Growing up around my family's construction business in Myanmar also shaped the way I think. I care about work that is realistic, useful, and worth building.</p>
+      </div>
+      <table class="props-table reveal">
+        <tr><td class="prop-key">University</td><td class="prop-val">Northeastern University</td></tr>
+        <tr><td class="prop-key">Major</td><td class="prop-val">Data Science + Business Administration</td></tr>
+        <tr><td class="prop-key">Graduation</td><td class="prop-val">May 2028</td></tr>
+        <tr><td class="prop-key">Focus areas</td><td class="prop-val"><span class="prop-tag">Product</span><span class="prop-tag">Strategy</span><span class="prop-tag">Analytics</span><span class="prop-tag">Consulting</span></td></tr>
+        <tr><td class="prop-key">Active courses</td><td class="prop-val"><span class="prop-tag">DS4300</span><span class="prop-tag">CS3100</span><span class="prop-tag">INTB1203</span><span class="prop-tag">FINA2201</span></td></tr>
+        <tr><td class="prop-key">Availability</td><td class="prop-val">Available for co-op &middot; Jun &ndash; Dec 2026</td></tr>
+      </table>
+    </section>
+
+    <section class="page-section" id="projects">
+      <div class="section-header reveal">
+        <span class="section-emoji">&#128193;</span>
+        <h2 class="section-title">Projects</h2>
+        <p class="section-desc">Click any row to read the full case note.</p>
+      </div>
+      <div class="projects-list">
+
+        <div class="project-row reveal" id="proj-music">
+          <div class="project-row-header" onclick="toggleProject('proj-music')">
+            <div class="project-row-left">
+              <div class="project-meta"><span class="project-num">01</span><span class="prop-tag">Data Analysis</span><span class="prop-tag">MongoDB</span></div>
+              <h3 class="project-row-title">Music Dataset Analysis</h3>
+              <p class="project-row-sub">JSON data, aggregation pipelines, and written findings &mdash; DS4300</p>
+            </div>
+            <div class="project-toggle">&#9658;</div>
+          </div>
+          <div class="project-body">
+            <div class="project-body-grid">
+              <div class="project-body-text">
+                <p class="block-label">Context</p>
+                <p>This project came from DS4300, Large-Scale Storage and Retrieval. I worked with a JSON-based music research dataset containing fields like <code>stimulus</code> and <code>is_attention</code>. The task was not just to run queries. It was to understand what the data actually contained, where it was inconsistent, and what it could credibly support.</p>
+                <p class="block-label">What I did</p>
+                <p>I used MongoDB and mongosh to inspect the dataset structure, then built aggregation pipelines using <code>$match</code>, <code>$group</code>, <code>$sort</code>, and <code>$limit</code>. Missing fields and empty values were common. I filtered and validated those before treating any output as final. The deliverable was a written analysis explaining the logic behind each result, not just the numbers.</p>
+                <p class="block-label">What it shows</p>
+                <p>Good query output requires knowing what you are filtering and why. I iterated on the pipeline logic several times before settling on findings I trusted.</p>
+              </div>
+              <div class="project-body-meta">
+                <div class="meta-group"><p class="meta-group-label">Tools</p><div class="meta-tag-list"><span class="prop-tag">MongoDB</span><span class="prop-tag">mongosh</span><span class="prop-tag">JSON</span></div></div>
+                <div class="meta-group"><p class="meta-group-label">Methods</p><div class="meta-tag-list"><span class="prop-tag">Aggregation pipelines</span><span class="prop-tag">Data cleaning</span><span class="prop-tag">Written analysis</span></div></div>
+                <div class="meta-group"><p class="meta-group-label">Type</p><div class="meta-tag-list"><span class="prop-tag">Technical</span><span class="prop-tag">Coursework</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row reveal" id="proj-burlook">
+          <div class="project-row-header" onclick="toggleProject('proj-burlook')">
+            <div class="project-row-left">
+              <div class="project-meta"><span class="project-num">02</span><span class="prop-tag">Product Concept</span><span class="prop-tag">Entrepreneurship</span></div>
+              <h3 class="project-row-title">BurLook</h3>
+              <p class="project-row-sub">Myanmar entertainment platform &mdash; Pitch Your Success Competition, 2023</p>
+            </div>
+            <div class="project-toggle">&#9658;</div>
+          </div>
+          <div class="project-body">
+            <div class="project-body-grid">
+              <div class="project-body-text">
+                <p class="block-label">Context</p>
+                <p>BurLook was developed for the Pitch Your Success Competition in Yangon, Myanmar in 2023. Myanmar entertainment audiences engage actively across film, music, and influencer media, but the infrastructure for finding and discussing that content is fragmented.</p>
+                <p class="block-label">What I did</p>
+                <p>I ran a citywide survey with around 50 responses to validate who the target users were and whether real demand existed. Those findings fed directly into product and positioning decisions. I built a pitch deck and website prototype using Figma and Framer, then presented with the team. We were selected as 1 of 10 teams to present out of 22 and received strong positive feedback.</p>
+                <p class="block-label">What it shows</p>
+                <p>BurLook is the clearest example of taking an idea from observation to research to something presentable. The survey work grounded the concept in real user data rather than assumptions.</p>
+              </div>
+              <div class="project-body-meta">
+                <div class="meta-group"><p class="meta-group-label">Tools</p><div class="meta-tag-list"><span class="prop-tag">Figma</span><span class="prop-tag">Framer</span><span class="prop-tag">Survey research</span></div></div>
+                <div class="meta-group"><p class="meta-group-label">Focus areas</p><div class="meta-tag-list"><span class="prop-tag">User research</span><span class="prop-tag">Market positioning</span><span class="prop-tag">Pitch development</span></div></div>
+                <div class="meta-group"><p class="meta-group-label">Outcome</p><div class="meta-tag-list"><span class="prop-tag">Top 10 of 22 teams</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row reveal" id="proj-guardia">
+          <div class="project-row-header" onclick="toggleProject('proj-guardia')">
+            <div class="project-row-left">
+              <div class="project-meta"><span class="project-num">03</span><span class="prop-tag">Health Innovation</span><span class="prop-tag">Team Project</span></div>
+              <h3 class="project-row-title">Guardia</h3>
+              <p class="project-row-sub">Seizure alert and independence concept &mdash; Husky Health Innovation Challenge</p>
+            </div>
+            <div class="project-toggle">&#9658;</div>
+          </div>
+          <div class="project-body">
+            <div class="project-body-grid">
+              <div class="project-body-text">
+                <p class="block-label">Context</p>
+                <p>Guardia was developed for Northeastern's Husky Health Innovation Challenge. Our team focused on adults living with epilepsy. Managing seizure risk and maintaining daily independence pull in opposite directions for most users.</p>
+                <p class="block-label">What we built</p>
+                <p>We moved past a basic alert system. The concept included seizure monitoring alongside mental health resources, peer community features, and tools for communicating a user's condition to the people around them. My contribution was in user needs research, concept framing, and helping translate the idea into a presentation that connected clinical realities to lived experience.</p>
+                <p class="block-label">What it shows</p>
+                <p>The strongest part of this project was getting the problem definition right before building anything. A reactive alert system would have been easier to pitch but would have missed what users actually needed.</p>
+              </div>
+              <div class="project-body-meta">
+                <div class="meta-group"><p class="meta-group-label">Focus areas</p><div class="meta-tag-list"><span class="prop-tag">User research</span><span class="prop-tag">Concept framing</span><span class="prop-tag">Presentation</span><span class="prop-tag">Teamwork</span></div></div>
+                <div class="meta-group"><p class="meta-group-label">Type</p><div class="meta-tag-list"><span class="prop-tag">Health tech</span><span class="prop-tag">Innovation challenge</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row reveal" id="proj-raiz">
+          <div class="project-row-header" onclick="toggleProject('proj-raiz')">
+            <div class="project-row-left">
+              <div class="project-meta"><span class="project-num">04</span><span class="prop-tag">Research</span><span class="prop-tag">Pitch</span></div>
+              <h3 class="project-row-title">RAIZ Pitch</h3>
+              <p class="project-row-sub">Donor pitch deck &mdash; NUVIEW / Manna Project International</p>
+            </div>
+            <div class="project-toggle">&#9658;</div>
+          </div>
+          <div class="project-body">
+            <div class="project-body-grid">
+              <div class="project-body-text">
+                <p class="block-label">Context</p>
+                <p>This pitch connected to work with NUVIEW and Manna Project International during a five-week experiential learning program. The task was to understand MPI's Raiz program in Ecuador, find the most compelling framing of the opportunity, and build materials that communicated it to an audience without prior context.</p>
+                <p class="block-label">What I contributed</p>
+                <p>I helped create an 11-slide donor-facing pitch deck in Canva, then presented as part of a three-person team across two meetings with MPI executives. My role centered on research and synthesis: pulling context from multiple sources, identifying what mattered most, and turning that into slides that were organized and readable. A large part of the work was editorial, deciding what to keep and what to cut.</p>
+                <p class="block-label">What it shows</p>
+                <p>Taking something complex, finding the through line, and communicating it concisely applies across most roles I am targeting. This project was a direct test of that under real constraints.</p>
+              </div>
+              <div class="project-body-meta">
+                <div class="meta-group"><p class="meta-group-label">Tools</p><div class="meta-tag-list"><span class="prop-tag">Canva</span></div></div>
+                <div class="meta-group"><p class="meta-group-label">Focus areas</p><div class="meta-tag-list"><span class="prop-tag">Research synthesis</span><span class="prop-tag">Narrative structure</span><span class="prop-tag">Pitch deck</span><span class="prop-tag">Stakeholder presentation</span></div></div>
+                <div class="meta-group"><p class="meta-group-label">Type</p><div class="meta-tag-list"><span class="prop-tag">Social impact</span><span class="prop-tag">Storytelling</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="page-section" id="skills">
+      <div class="section-header reveal">
+        <span class="section-emoji">&#129513;</span>
+        <h2 class="section-title">Skills</h2>
+      </div>
+      <div class="skills-columns">
+        <div class="skill-block reveal">
+          <p class="skill-block-title">Product &amp; Strategy</p>
+          <ul class="skill-list">
+            <li><span class="skill-check">&#10003;</span> Problem framing</li>
+            <li><span class="skill-check">&#10003;</span> User-centered thinking</li>
+            <li><span class="skill-check">&#10003;</span> Product concept development</li>
+            <li><span class="skill-check">&#10003;</span> Market and competitive reasoning</li>
+            <li><span class="skill-check">&#10003;</span> Structured decision-making</li>
+          </ul>
+        </div>
+        <div class="skill-block reveal">
+          <p class="skill-block-title">Technical &amp; Analytical</p>
+          <ul class="skill-list">
+            <li><span class="skill-check">&#10003;</span> MongoDB and NoSQL querying</li>
+            <li><span class="skill-check">&#10003;</span> SQL and relational databases</li>
+            <li><span class="skill-check">&#10003;</span> Python (pandas, data analysis)</li>
+            <li><span class="skill-check">&#10003;</span> Java, OOP and design patterns</li>
+            <li><span class="skill-check">&#10003;</span> HTML, CSS, JavaScript (basic)</li>
+          </ul>
+        </div>
+        <div class="skill-block reveal">
+          <p class="skill-block-title">Research &amp; Communication</p>
+          <ul class="skill-list">
+            <li><span class="skill-check">&#10003;</span> Research and synthesis</li>
+            <li><span class="skill-check">&#10003;</span> Pitch and presentation development</li>
+            <li><span class="skill-check">&#10003;</span> Written analysis</li>
+            <li><span class="skill-check">&#10003;</span> Stakeholder communication</li>
+            <li><span class="skill-check">&#10003;</span> Cross-functional teamwork</li>
+          </ul>
+        </div>
+        <div class="skill-block reveal">
+          <p class="skill-block-title">Tools</p>
+          <ul class="skill-list">
+            <li><span class="skill-check">&#10003;</span> Figma and Framer</li>
+            <li><span class="skill-check">&#10003;</span> Canva</li>
+            <li><span class="skill-check">&#10003;</span> MongoDB / mongosh</li>
+            <li><span class="skill-check">&#10003;</span> Microsoft Office Suite</li>
+            <li><span class="skill-check">&#10003;</span> Google Workspace</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" id="experience">
+      <div class="section-header reveal">
+        <span class="section-emoji">&#128204;</span>
+        <h2 class="section-title">Experience</h2>
+      </div>
+      <div class="exp-rows reveal">
+        <div class="exp-row">
+          <div class="exp-date">2024 &ndash; present</div>
+          <div>
+            <p class="exp-title">Undergraduate Student</p>
+            <p class="exp-org">Northeastern University &mdash; Khoury College &amp; D'Amore-McKim School of Business</p>
+            <p class="exp-desc">Pursuing a combined Data Science and Business Administration degree. Coursework includes large-scale storage and retrieval, object-oriented programming, financial management, and international business. Project work spans data analysis, innovation challenges, and product strategy.</p>
+          </div>
+        </div>
+        <div class="exp-row">
+          <div class="exp-date">Jun 2025</div>
+          <div>
+            <p class="exp-title">BCG GenAI Job Simulation</p>
+            <p class="exp-org">Boston Consulting Group via Forage &middot; Remote</p>
+            <p class="exp-desc">Built an AI-powered financial chatbot prototype that translated user prompts into structured financial insights. Used Python and pandas to clean, transform, and analyze data from 10-K and 10-Q SEC filings. Applied rule-based logic across multi-period filing data to generate user-readable outputs including performance drivers and key changes over time.</p>
+          </div>
+        </div>
+        <div class="exp-row">
+          <div class="exp-date">May &ndash; Jun 2025</div>
+          <div>
+            <p class="exp-title">NUVIEW with Manna Project International</p>
+            <p class="exp-org">Remote &middot; Experiential Learning Program</p>
+            <p class="exp-desc">Participated in a five-week program focused on social impact and entrepreneurship. Created an 11-slide donor-facing pitch deck for MPI's Raiz program in Ecuador and presented to MPI executives as part of a three-person team across two meetings.</p>
+          </div>
+        </div>
+        <div class="exp-row">
+          <div class="exp-date">2025</div>
+          <div>
+            <p class="exp-title">Participant &mdash; Husky Health Innovation Challenge</p>
+            <p class="exp-org">Northeastern University</p>
+            <p class="exp-desc">Developed Guardia with a team, a concept for seizure monitoring and daily independence support for adults with epilepsy. Worked through user research, problem framing, concept design, and final presentation under a competitive format.</p>
+          </div>
+        </div>
+
+        <div class="exp-row">
+          <div class="exp-date">Sep &ndash; Oct 2023</div>
+          <div>
+            <p class="exp-title">Pitch Your Success Competition</p>
+            <p class="exp-org">Yangon, Myanmar</p>
+            <p class="exp-desc">Developed BurLook, a web platform connecting Myanmar residents with cultural and entertainment content. Conducted a citywide survey with around 50 responses to validate users and demand. Built a pitch deck and website prototype using Figma and Framer. Selected as 1 of 10 teams to present out of 22.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" id="contact">
+      <div class="section-header reveal">
+        <span class="section-emoji">&#9993;</span>
+        <h2 class="section-title">Contact</h2>
+      </div>
+      <div class="callout reveal">
+        <span class="callout-icon">&#128197;</span>
+        <p class="callout-text">Available for co-op June &ndash; December 2026. Open to roles in product management, strategy, analytics, consulting, and business-facing technical work.</p>
+      </div>
+      <div class="contact-cards reveal">
+        <a href="https://www.linkedin.com/in/may-myat-moe-pwint" class="contact-card" target="_blank" rel="noopener">
+          <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zm2-4a2 2 0 110 4 2 2 0 010-4z"/></svg></div>
+          <div><p class="contact-label">LinkedIn</p><p class="contact-value">linkedin.com/in/may-myat-moe-pwint</p></div>
+        </a>
+        <a href="mailto:moepwint.m@northeastern.edu" class="contact-card">
+          <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><p class="contact-label">School Email</p><p class="contact-value">moepwint.m@northeastern.edu</p></div>
+        </a>
+        <a href="mailto:empwint23@gmail.com" class="contact-card">
+          <div class="contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><p class="contact-label">Personal Email</p><p class="contact-value">empwint23@gmail.com</p></div>
+        </a>
+      </div>
+      <div class="cta-block reveal">
+        <div class="cta-text">
+          <h3>View the full resume.</h3>
+          <p>Available for co-op June &ndash; December 2026. Open to roles in product, strategy, analytics, and business-facing technical work.</p>
+        </div>
+        <a href="./May_Myat__Elizabeth__Moe_Pwint_Resume.pdf" class="btn btn-cta" download>Download Resume</a>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <span>May Myat (Elizabeth) Moe Pwint</span>
+      <span>Northeastern University &middot; Class of 2028</span>
+    </footer>
+  </main>
+</div>
+<script>
+  function toggleProject(id){document.getElementById(id).classList.toggle('open')}
+  var r=document.querySelectorAll('.reveal');
+  var ro=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');ro.unobserve(x.target)}})},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+  r.forEach(function(el){ro.observe(el)});
+  var ni=document.querySelectorAll('.sidebar .nav-item');
+  var sc=document.querySelectorAll('section[id]');
+  var so=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){ni.forEach(function(i){i.classList.remove('active');if(i.getAttribute('href')==='#'+x.target.id)i.classList.add('active')})}})},{threshold:0.3});
+  sc.forEach(function(s){so.observe(s)});
+</script>
+</body>
+</html>
